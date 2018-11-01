@@ -12,8 +12,6 @@ void main() {
 }
 
 class One extends StatefulWidget  {
-
-
   @override
   State<StatefulWidget> createState()=>new OneStat() ;
 }
@@ -119,7 +117,7 @@ class FullStat extends State<FullList> {
                       Expanded(
                         child: Row(
                           children: <Widget>[
-                            Expanded(child: Text(items[index]["date"]!=null?items[index]["date"].substring(10,19):"",textAlign: TextAlign.center)),
+                            Expanded(child: Text(items[index]["date"]!=null?items[index]["date"].substring(5,19):"",textAlign: TextAlign.center)),
                           ],
                         ),
                       ),
@@ -163,10 +161,7 @@ class TutorialHome extends StatelessWidget {
           tooltip: 'Add', // used by assistive technologies
           child: new Icon(Icons.add),
           onPressed: () {
-            Navigator.push(
-              context,
-              new MaterialPageRoute(builder: (context) => new Add()),
-            );
+            Navigator.pushNamed(context,'/add');
           }),
     );
   }
@@ -191,6 +186,10 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'My app', // used by the OS task switcher
       home: new TutorialHome(),
+      routes: <String, WidgetBuilder> {
+        '/add': (BuildContext context) => new Add(),
+        '/home' : (BuildContext context) => new TutorialHome(),
+      },
     );
   }
 }

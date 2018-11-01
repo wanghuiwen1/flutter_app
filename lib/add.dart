@@ -26,10 +26,7 @@ class AddStat extends State<Add> {
     _database = await openDatabase(path, version: 1);
     await _database.insert("record",record.toMap());
     await _database.close();
-    await Navigator.push(
-      context,
-      new MaterialPageRoute(builder: (context) => new TutorialHome()),
-    );
+    Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
   }
 
   @override
@@ -61,6 +58,7 @@ class AddStat extends State<Add> {
                       CardSettingsText(
                         label: '金额',
                         keyboardType: TextInputType.number,
+                        initialValue: "0",
                         onSaved: (value){
                           record.money=value;
                         },
