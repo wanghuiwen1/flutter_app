@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'Record.dart';
-import 'main.dart';
 import 'package:card_settings/card_settings.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 
 class Add extends StatefulWidget{
@@ -42,7 +41,13 @@ class AddStat extends State<Add> {
           },))
       ],
     );
+    Future getImage() async {
+      var image = await ImagePicker.pickImage(source: ImageSource.gallery);
 
+      setState(() {
+        record.image = image.path;
+      });
+    }
 
     return new Scaffold(
         appBar: new AppBar(
@@ -91,6 +96,12 @@ class AddStat extends State<Add> {
 
                         },
                       ),
+                      CardSettingsField(
+                          label: "图片",
+                          content: Container(
+                            child: record.image==null?RaisedButton(onPressed: getImage,):new Image.file(File(record.image)),
+                          )
+                        ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CardSettingsButton(

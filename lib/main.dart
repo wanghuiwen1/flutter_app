@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-
-import 'Record.dart';
 import 'add.dart';
 
 void main() {
@@ -109,7 +107,7 @@ class FullStat extends State<FullList> {
                       Expanded(
                         child: Row(
                           children: <Widget>[
-                            Expanded(child: Text(items[index]["money"].toString()+" 元",textAlign: TextAlign.center)),
+                            Expanded(child: Text(items[index]["image"].toString()+" 元",textAlign: TextAlign.center)),
                           ],
                         ),
                       ),
