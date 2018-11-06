@@ -107,7 +107,7 @@ class FullStat extends State<FullList> {
                       Expanded(
                         child: Row(
                           children: <Widget>[
-                            Expanded(child: Text(items[index]["image"].toString()+" 元",textAlign: TextAlign.center)),
+                            Expanded(child: Text(items[index]["money"].toString()+" 元",textAlign: TextAlign.center)),
                           ],
                         ),
                       ),
@@ -173,7 +173,7 @@ class MyApp extends StatelessWidget {
     Database database = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) {
           db.execute(
-              "create table record (id long,money varchar(255),date varchar(255),type varchar(255))");
+              "create table record (id long,money varchar(255),date varchar(255),type varchar(255),image varchar(255))");
         });
   }
 
